@@ -1,16 +1,12 @@
 import discord
+import os
 from discord.ext import commands
-client = commands.Bot(command_prefix="(#>O<#)")
-
-
-@client.event
-async def is_ready():
-    print("Prepare yourselves")
+client = commands.Bot(command_prefix="*_*")
 
 
 @client.command()
-async def greetings(ctx):
-    await ctx.send("Annyeonghaseyo! (Onions on for Sale!)")
+async def hello(ctx):
+    await ctx.send("Annyeonghaseyo! (Onions on Sale!)")
 
-
-client.run("Nzk2OTE5NTY5NTQwMzE3MTg0.X_e7Lw.qBspeNIT1kL0H47dlAVy3GXKtfI")
+print("Running client")
+client.run(os.environ["DISCORD_TOKEN"])
