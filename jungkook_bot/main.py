@@ -32,22 +32,29 @@ async def fantasy(ctx):
         names.append(user.name)
     names.remove("Jungkook Bot")
     random.shuffle(names)
-    create_simple_fantasy(names[0])
+    await ctx.send(create_simple_fantasy() + names[0] + '.')
+
 
 @client.command()
-async def fanfic(ctx, name):
+async def fanfic(ctx):
     # Write custom fanfics here as strings, in a list
 
     # the structure should be:f'fanfiction{name}fanfiction',
-    fanfic = [f'{name} hopelessly fell for Jungkook.', f'Jungkook took {name} on a date to the beach.']
-    random.shuffle(fanfic)
-    await ctx.send(fanfic[0])
+    names = list()
+    for user in ctx.guild.members:
+        names.append(user.name)
+    names.remove("Jungkook Bot")
+    random.shuffle(names)
+    name=names[0]
+    fanfiction = [f'{name} hopelessly fell for Jungkook.', f'Jungkook took {name} on a date to the beach.']
+    random.shuffle(fanfiction)
+    await ctx.send(fanfiction[0])
 
 
-def create_simple_fantasy(name):
-    verbs = ['went', 'kissed', 'felt', 'fell', 'loved']
+def create_simple_fantasy():
+    verbs = [' went on a date with ', ' was kissed by ', ' felt ', ' fell for ', ' craved ']
     random.shuffle(verbs)
-    return 'Jungkook' + name + verbs[0]
+    return 'Jungkook' + verbs[0]
 
 
 print("Running client")
