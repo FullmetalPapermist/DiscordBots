@@ -3,7 +3,6 @@ import os
 import random
 from discord.ext import commands
 
-
 intents = discord.Intents.default()
 intents.members = True
 
@@ -18,11 +17,9 @@ async def on_ready():
     print('------')
 
 
-
 @client.command()
 async def hello(ctx):
     await ctx.send("Annyeonghaseyo! (Onions on Sale!)")
-    print()
 
 
 @client.command()
@@ -45,13 +42,14 @@ async def fanfic(ctx):
         names.append(user.name)
     names.remove("Jungkook Bot")
     random.shuffle(names)
-    name=names[0]
+    name = names[0]
     fanfiction = [f'{name} hopelessly fell for Jungkook.', f'Jungkook took {name} on a date to the beach.']
     random.shuffle(fanfiction)
     await ctx.send(fanfiction[0])
 
 
 def create_simple_fantasy():
+    # add verbs to the list which make sense with: Jungkook 'verb' person
     verbs = [' went on a date with ', ' was kissed by ', ' felt ', ' fell for ', ' craved ']
     random.shuffle(verbs)
     return 'Jungkook' + verbs[0]
